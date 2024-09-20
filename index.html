@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .login-container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border: 5px solid #4CAF50; /* Green border */
+            position: relative;
+        }
+        h1, h2 {
+            text-align: center;
+            margin: 0;
+        }
+        h1 {
+            color: #2196F3; /* Blue header */
+        }
+        h2 {
+            color: #FF5722; /* Orange sub-header */
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #5cb85c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #4cae4c;
+        }
+        .logout {
+            display: none;
+            margin-top: 10px;
+            text-align: center;
+        }
+        .logout a {
+            color: #D50000; /* Red color for logout link */
+            text-decoration: none;
+        }
+        .logout a:hover {
+            text-decoration: underline;
+        }
+        .colorful-border {
+            border: 5px solid #FFEB3B; /* Yellow border */
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-container colorful-border">
+    <h1>KONGU ENGINEERING COLLEGE</h1>
+    <h2>DEPARTMENT OF ECE</h2>
+    <form id="loginForm">
+        <input type="text" id="username" placeholder="Login ID" required>
+        <input type="password" id="password" placeholder="Password" required>
+        <button type="submit">Login</button>
+    </form>
+    <p id="errorMessage" style="color:red;"></p>
+    <div class="logout" id="logoutContainer">
+        <p>You are logged in! <a href="#" id="logoutButton">Logout</a></p>
+    </div>
+</div>
+
+<script>
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent form submission
+
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+
+        // Check credentials
+        if (username === 'kecece' && password === 'ecebell') {
+            // Show logout option
+            document.getElementById('logoutContainer').style.display = 'block';
+            // Redirect to specified IP address
+            window.location.href = 'http://192.168.50.70';
+        } else {
+            document.getElementById('errorMessage').textContent = 'Invalid login ID or password.';
+        }
+    });
+
+    document.getElementById('logoutButton').addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent default anchor behavior
+        document.getElementById('logoutContainer').style.display = 'none';
+        document.getElementById('loginForm').reset(); // Reset form
+        document.getElementById('errorMessage').textContent = ''; // Clear error message
+    });
+</script>
+
+</body>
+</html>
